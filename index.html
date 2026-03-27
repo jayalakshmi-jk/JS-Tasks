@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        #btn.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
-    
+
+
+    <!-- <button id="btn">ON</button>
+        <script>
+            let btn = document.getElementById("btn")
+            let isOn = true;
+
+
+            btn.addEventListener("click",()=>{
+
+                if(!isOn){
+                    btn.textContent = "ON"
+                }else{
+                    btn.textContent = "OFF"
+                }
+            })
+        </script> -->
+
+
+    <button id="btn">Click</button>
+    <div class="hidden">
+        <p>Hi JAYA!!!!</p>
+    </div>
+    <script>
+        let btn = document.getElementById("btn")
+        let content = document.querySelector(".hidden")
+
+        btn.addEventListener("click",()=>{
+            content.classList.toggle ("hidden");
+
+            btn.classList.toggle ("active");
+        })
+    </script>
+
+
 </body>
+
 </html>

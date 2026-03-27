@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grocery</title>
+</head>
+
+<body>
+    <div class="">
+        <h2>Grocery App</h2>
+        <div class="form">
+            <form id="form">
+                <input type="text" id="input" class="input">
+                <button type="submit" id="sub-btn">ADD</button>
+            </form>
+        </div>
+
+        <div class="list"></div>
+    </div>
+    <script>
+
+        let form = document.getElementById("form")
+        let input = document.getElementById("input")
+        let sub_btn = document.getElementById("sub-btn")
+        let flag = true;
+        let edit;
+
+
+        window.onload = () => {
+            list()
+        }
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            // getStorage()
+            if (input.value) {
+                addStorage()
+                // list()
+                input.value = ""
+            } else {
+                alert("value enter pannu")
+            }
+
+        })
+
+        function list() {
+            let list = document.querySelector(".list");
+
+            let data = getStorage();
+            list.innerHTML = ""
+            data.forEach((item) => {
+                let div = document.createElement("div");
+                div.innerHTML = `<p>${item.val}</p> 
+                <button onclick="editItem(${item.id})">Edit</button> 
+                <button onclick="deleteItem(${item.id})">Delete</button>`;
+                list.appendChild(div);
+            })
+
+        }
+        function editItem(id) {
+            let data = getStorage();
+            for (i = 0; i < data.length; i++) {
+                if (id == data[i].id) {
+                    input.value = data[i].val
+                    // console.log(data[i].val);
+                    let uval = input.value;
+                    sub_btn.textContent = "Edit";
+                    flag = false
+                    edit = id
+
+                }
+            }
+            list()
+        }
+
+
+        function getStorage() {
+            return localStorage.getItem("item") ? JSON.parse(localStorage.getItem("item")) : [];
+        }
+
+
+        function addStorage() {
+            let data = getStorage();
+            console.log(data);
+
+            if (flag) {
+
+                let id = Date.now()
+                let val = input.value
+                let obj = { id, val }
+                data.push(obj)
+                localStorage.setItem("item", JSON.stringify(data))
+                list()
+            } else {
+                for (i = 0; i < data.length; i++) {
+                    if (edit == data[i].id) {
+                        data[i].val = input.value
+                        console.log(data[i].val);
+
+                         localStorage.setItem("item", JSON.stringify(data))
+                        flag=true
+                        sub_btn.textContent = "ADD"
+                        list()
+                    }
+                }
+               
+            }
+
+
+        }
+
+        function deleteItem(id) {
+            let data = getStorage();
+            for (i = 0; i < data.length; i++) {
+                if (id == data[i].id) {
+                    data.splice(i, 1)
+                }
+            }
+            localStorage.setItem("item", JSON.stringify(data))
+            list()
+        }
+
+
+    </script>
+</body>
+
+</html>

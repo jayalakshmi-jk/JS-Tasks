@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <!-- <p id="id"></p> -->
+        </div>
+    </div>
+
+    <script>
+        let div = document.querySelector(".content")
+        let url = 'https://dummyjson.com/todos';
+        fetch(url)
+            .then (response=>{
+                if(!response.ok){
+                    throw new Error("error",response.status)
+                     
+                }
+                return response.json();
+            })
+            .then(data =>{
+                console.log(data.todos);
+
+                let datas =data.todos;
+                div.innerHTML = datas.map(i=>{
+                    return `<p>${i.userId}</p><br>
+                    <p>${i.todo}</p><br>
+                    <p>${i.completed}</p>`
+
+                })
+
+                
+            })
+            .catch(error=>{
+                console.log(error);
+                
+            })
+
+        
+    </script>
+</body>
+</html>

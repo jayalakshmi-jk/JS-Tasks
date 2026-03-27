@@ -80,9 +80,9 @@
 //  Write a program that checks whether a given string reads the 
 //  same backward and forward (ignoring case and spaces).
 
-// let str = "Racecar";
-// let str1=str.toLowerCase();
-// let rstr = str1.split("").reverse().join("");
+// let str = "Race car";
+// let str1=str.toLowerCase().replace(/ /g, "");
+// let rstr = str1.split(" ").reverse().join("");
 // if(str1===rstr){
 //     console.log("Is Palindrome : true")
 // }
@@ -136,4 +136,3 @@
 // console.log(`After removing duplicates: ${result}`);
 
 //self coded and discussed with balamurugan
-

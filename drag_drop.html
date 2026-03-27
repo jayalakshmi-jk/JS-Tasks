@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 200px;
+        }
+
+        .left {
+            padding: 20px;
+            border: 1px black solid;
+        }
+
+        .right {
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+        p {
+            background-color: #e07070 ;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <!-- <fieldset> -->
+            <p class="item" draggable="true">Item 1</p>
+            <p class="item" draggable="true">Item 2</p>
+            <p class="item" draggable="true">Item 3</p>
+            <p class="item" draggable="true">Item 4</p>
+            <p class="item" draggable="true">Item 5</p>
+        </div>
+        <div class="right">
+        </div>
+        
+
+    </div>
+
+
+    <script>
+        let item = document.getElementsByClassName("item")
+        let right = document.querySelector(".right")
+        let left = document.querySelector(".left")
+
+        for (let items of item) {
+            items.addEventListener("dragstart", (e) => {
+                let select = e.target;
+
+
+                right.addEventListener("dragover", (e) => {
+                    e.preventDefault()
+                })
+                right.addEventListener("drop", (e) => {
+                    right.appendChild(select);
+                    select = null;
+
+                })
+
+                left.addEventListener("dragover", (e) => {
+                    e.preventDefault()
+                })
+                left.addEventListener("drop", (e) => {
+                    left.appendChild(select);
+                    select = null
+                })
+            })
+        }
+
+        left.addEventListener("dragover", (e) => {
+            e.preventDefault()
+        })
+        left.addEventListener("drop", (e) => {
+            e.preventDefault()
+
+            let fi = e.dataTransfer.files;
+            console.log(fi);
+
+            for (i = 0; i < fi.length; i++) {
+                let li = document.createElement("li");
+                li.textContent = fi[i].name;
+                left.append(li)
+            }
+
+        })
+
+    </script>
+
+
+</body>
+
+</html>

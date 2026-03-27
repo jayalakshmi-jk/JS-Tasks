@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .star {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            margin-top: 6%;
+            /* margin-bottom: -4%; */
+            margin-left: 35%;
+        }
+
+        #start {
+            width: 70px;
+            height: 30px;
+        }
+
+        .btns {
+            gap: 16%;
+            display: flex;
+            margin-top: 5%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="star">
+        <h1>quiz app</h1>
+        <button id="start">start</button>
+    </div>
+
+
+    <div class="container" style="display: none;">
+        <p class="timer" style="margin-left: 20px;"></p>
+        <h3 id="ques"></h3>
+
+        <div class="options">
+            <button class="opt"></button>
+            <button class="opt"></button>
+            <button class="opt"></button>
+            <button class="opt"></button>
+
+        </div>
+
+        <div class="btns">
+            <button class="prev">Previous</button>
+            <button class="next">Next</button>
+        </div>
+
+
+    </div>
+
+    <script>
+        let arr = [
+            {
+                No: "What is the capital of TamilNadu?",
+                answer: "Chennai",
+                options: ["Chennai", "Selam", "Trichy", "Madurai"],
+            },
+            {
+                No: "What is 2 + 2?",
+                answer: "4",
+                options: ["3", "4", "5", "6"],
+            },
+            {
+                No: "What is the largest planet in our solar system?",
+                answer: "Jupiter",
+                options: ["Earth", "Mars", "Jupiter", "Saturn"],
+            },
+            {
+                No: "What is the output? let a=15;let b=5;let c=a/b;console.log(c)",
+                answer: "3",
+                options: [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                ],
+            },
+            {
+                No: "Who is the prime minister of India?",
+                answer: "Narendra Modi",
+                options: ["Charan Singh", "Indira Gandhi", "Narendra Modi", "Jawaharlal Nehru"],
+            },
+            {
+                No: "What is the chemical symbol for gold?",
+                answer: "Au",
+                options: ["Ag", "Au", "Gd", "Pb"],
+            }]
+
+
+        let start = document.getElementById("start")
+        let question = document.getElementById("ques")
+        let options = document.querySelectorAll(".opt")
+        let count = 0
+        let next = document.querySelector(".next")
+        let prev = document.querySelector(".prev")
+        let timer = document.querySelector(".timer")
+
+        let ua = [] 
+
+        start.addEventListener("click", () => {
+            document.querySelector(".star").style.display = "none";
+            document.querySelector(".container").style.display = "block";
+
+            showQuestion()
+            startTime()
+
+
+        })
+        function startTime() {
+            let time = 60;
+            let t = setInterval(() => {
+                let min = Math.floor(time / 60);
+                let sec = time % 60;
+
+                timer.innerHTML = `${min}: ${sec}`;
+
+
+                if (time <= 0) {
+                    clearInterval(t)
+                    alert("time mudiinchuuu")
+                }
+                time--
+            }, 1000)
+
+
+
+        }
+
+        function showQuestion() {
+
+            question.textContent = arr[count].No;
+
+            options[0].textContent = arr[count].options[0];
+            options[1].textContent = arr[count].options[1];
+            options[2].textContent = arr[count].options[2];
+            options[3].textContent = arr[count].options[3];
+
+            // console.log(options);
+
+            options.forEach((btn, i) => {
+                btn.textContent = arr[count].options[i];
+                btn.disabled = false;
+
+                btn.style.background = "white";
+
+
+                btn.onclick = () => {
+                    options.forEach(a => { a.disabled = true })
+                    if (btn.innerText == arr[count].answer) {
+                        btn.style.background = "green"
+                    } else {
+                        btn.style.background = "red"
+
+                    }
+                }
+            })
+        }
+
+
+
+        next.addEventListener("click", () => {
+            if (count < arr.length - 1) {
+                count++
+                showQuestion()
+                console.log(count);
+
+            }
+        })
+
+        prev.addEventListener("click", () => {
+            if (count < arr.length) {
+                count--
+                console.log(count);
+                showQuestion()
+            }
+        })
+    </script>
+</body>
+
+</html>

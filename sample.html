@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h1>HII</h1>
+        <button>Click</button>
+
+    <script>
+        let text = document.querySelector("h1")
+        let btn = document.querySelector("button")
+        btn.addEventListener("click",()=>{
+            let arr =["jaya","jesi","sowmi"]
+            let random = Math.floor(Math.random()*arr.length)
+            text.innerText = arr[random]
+        })
+    </script>
+    </body>
+</html>
+

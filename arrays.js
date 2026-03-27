@@ -44,7 +44,7 @@
 //myself
 
 // Task 5: Count Occurrences of Each Element
-// let arr = ["apple", "banana", "apple", "cherry", "banana", "apple"];
+// let arr = ["apple", "mango", "apple", "cherry", "mango", "apple"];
 // let obj = {}
 // for(i=0;i<arr.length;i++){
 //     if(!obj[arr[i]]){
@@ -76,6 +76,19 @@
 // let c = [...a,...b]
 // let narr = [...new Set(c)];
 // console.log(narr)
+
+// let a = [1, 2, 3];
+// let b = [3, 4, 5];
+// let c = [];
+
+// [a,b].forEach(element => {
+//     element.forEach(item=>{
+//         if(!c.includes(item)){
+//             c.push(item)
+//         }
+//     })
+// });
+// console.log(c);
 
 //myself
 
@@ -184,14 +197,6 @@
 // console.log("Average = ",avg);
 
 //myself
-
-
-
-
-
-
-
-
 
 
 

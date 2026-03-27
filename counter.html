@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p class="count">0</p>
+        <button id="start">start</button>
+        <button id="stop">stop</button>
+        <button id="reset">reset</button>
+        <!-- <p contenteditable=""></p> -->
+    </div>
+    <script>
+        let start = document.getElementById("start");
+        let stop = document.getElementById("stop")
+        let para =  document.querySelector(".count") 
+        let reset= document.getElementById("reset")
+        let count = 1;
+        start.addEventListener("click",()=>{
+            console.log("start aachu");
+            
+           let srt= setInterval(()=>{
+                  para.textContent = count++
+
+            //        if(count == 11){
+            //     clearInterval(srt)
+            // }
+            },1000)
+           
+          stop.addEventListener("click",()=>{
+            clearInterval(srt);
+
+            console.log("stop aachu");
+            
+          })
+
+          reset.addEventListener("click",()=>{
+            console.log("reset achu");
+            
+            para.textContent = clearInterval(srt);
+            count=1;
+            para.textContent = 0;
+          })
+        })
+    </script>
+</body>
+
+</html>

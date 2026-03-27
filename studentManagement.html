@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System</title>
 </head>
+
 <body>
     <script>
         let students = [];
@@ -15,6 +16,7 @@
                 alert("Fill the all fields!");
                 return;
             }
+
 
             let exists = students.some(student => student.id == id);
             if (exists) {
@@ -38,7 +40,7 @@
 
         }
         //Update Student
-        function updateStudent(updateId, newGrade, newCourse){
+        function updateStudent(updateId, newGrade, newCourse) {
             let studentID = students.some(s => s.id == updateId);
             if (!studentID) {
                 alert("Record not Found!!!")
@@ -73,7 +75,7 @@
             } else {
                 alert(`Student Found: \n\n ID: ${student.id}\n Name: ${student.name}\n Age: ${student.age}\n Grade: ${student.grade}\n Course: ${student.course}`)
             }
-           
+
         }
         //input
         while (true) {
@@ -118,6 +120,6 @@
     </script>
 </body>
 
-</html> -->
+</html>
 
-<!-- //syntax refer by google and help with balamurugan -->
+//syntax refer by google and help with balamurugan -->

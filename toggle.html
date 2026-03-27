@@ -1,0 +1,176 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+
+<body>
+    <label class="toggle-switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
+    </label>
+
+    <script>
+        let body = document.body
+        // console.log(body);
+        
+        const toggle = document.getElementById('toggle');
+toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+         console.log('Toggle is ON');
+        body.style.background = "red"
+    } else {
+        console.log('Toggle is OFF');
+        body.style.background = "white"
+    }
+});
+    </script>
+</body>
+
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div{
+            position: relative;
+            height: 40px;
+            width: 70px;
+            display: inline-block;
+        }
+        .change{
+            /* position: absolute; */
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+        .sp{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 15px;
+
+
+        }
+        .sp::before{
+            position: absolute;
+            content: "";
+            height: 30px;
+            width: 30px;
+            left: 5px;
+            bottom: 5px;
+            background-color: white;
+            border-radius: 15px;
+            transition: .5s;
+        }
+        .change:checked+.sp::before{
+            transform: translateX(28px);
+        }
+        .change:checked+.sp{
+            background-color: aqua;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    
+    <label class="div">
+        <input type="checkbox" id="change" class="change">
+        <span class="sp"></span>
+    </label>
+
+    <script>
+        let toggle = document.getElementById("change");
+
+        document.addEventListener("DOMContentLoaded",(e)=>{
+            let save = localStorage.getItem("theme")
+            if(save=="gray"){
+                 document.body.style.background = "gray"
+                 toggle.checked = true;
+            }else{
+                document.body.style.background = "white"
+                 toggle.checked = false;
+            }
+            console.log("hii");
+            
+        })
+        toggle.addEventListener("change",()=>{
+            if(toggle.checked){
+                console.log("ON");
+                localStorage.setItem("theme","gray")
+                document.body.style.background = "gray"
+
+                
+            }else{
+                console.log("OFF");
+                localStorage.setItem("theme","white")
+                 document.body.style.background = "white"
+
+                
+            }
+
+        })
+    </script>
+</body>
+</html>

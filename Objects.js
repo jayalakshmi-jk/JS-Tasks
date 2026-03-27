@@ -76,7 +76,11 @@
 //   marks: { math: 90, science: 85 }
 // };
 // //console.log(student)
-// let copy=Object.assign({},student)
+// //shallow copy
+// // let copy = student
+// //deep copy
+// // let copy=structuredClone(student)
+// // let copy = JSON.parse(JSON.stringify(student))
 // copy.marks.math=100
 // console.log("Copied Object: ",copy)
 // console.log("Original Object: ",student)
@@ -101,7 +105,7 @@
 
 //myself
 
-// Task 8: Freeze and Modify
+// // Task 8: Freeze and Modify
 // const settings = {
 //   theme: "dark",
 //   fontSize: 14
